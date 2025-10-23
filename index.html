@@ -4,42 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maria Leonilyn Naive | Web Portfolio</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
     <style>
-        /* Custom CSS para sa Glassmorphism */
+        /* ================================================= */
+        /* 1. GLASSMORPHISM & GENERAL STYLES */
+        /* ================================================= */
         .glass-card {
-            background: rgba(255, 255, 255, 0.1); /* Gamayng transparency */
-            backdrop-filter: blur(10px); /* Frosted glass effect */
-            -webkit-backdrop-filter: blur(10px); /* Para sa Safari compatibility */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Manipis, puti nga border */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Gamayng shadow */
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+            transition: all 0.5s ease-in-out;
         }
+        /* Glass Card Hover Glow */
+        .glass-card:hover {
+            box-shadow: 0 0 15px rgba(52, 211, 163, 0.8), 0 8px 32px 0 rgba(0, 0, 0, 0.5); /* Teal Glow on Hover */
+        }
+
         /* Fixed Nav Bar Glass Style */
         .glass-nav {
-            background: rgba(44, 83, 100, 0.7); /* Darker, slightly transparent background */
+            background: rgba(44, 83, 100, 0.7); 
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
         }
-        /* I-set ang background sa tibuok page */
-        body {
-            background: linear-gradient(135deg, #0f2027, #2c5364); /* Nindot nga gradient background */
-            min-height: 100vh;
-        }
-        /* Para husto ang scroll position sa fixed header */
+        
+        /* Fixed header scroll padding */
         .section-padding {
             padding-top: 6rem; 
             padding-bottom: 4rem;
         }
+        
+        /* Text Glow Effect */
+        .glow-text {
+            text-shadow: 
+                0 0 7px rgba(52, 211, 163, 0.6), 
+                0 0 12px rgba(52, 211, 163, 0.4); 
+        }
+
+        /* ================================================= */
+        /* 2. NEW ANIMATED BACKGROUND (SHOWER/METEOR EFFECT) */
+        /* ================================================= */
+        body {
+            background: #0f2027; /* Solid dark base */
+            min-height: 100vh;
+            overflow-x: hidden; /* Hide horizontal scroll from animations */
+        }
+        
+        /* Container for the animated stars/glitter */
+        .star-shower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks to pass through */
+            z-index: -1; /* Keep it behind all content */
+        }
+        
+        /* Styling for each star/glitter element */
+        .star-shower .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #a9f1df; /* Light teal color */
+            border-radius: 50%;
+            opacity: 0;
+            animation: fallAndGlow linear infinite;
+        }
+
+        /* Generate multiple stars with different starting positions and delays */
+        /* This is the heart of the CSS shower effect */
+        .star-shower .star:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; animation-duration: 15s; }
+        .star-shower .star:nth-child(2) { top: 5%; left: 50%; animation-delay: 2s; animation-duration: 10s; }
+        .star-shower .star:nth-child(3) { top: 70%; left: 80%; animation-delay: 4s; animation-duration: 18s; }
+        .star-shower .star:nth-child(4) { top: 40%; left: 30%; animation-delay: 6s; animation-duration: 12s; }
+        .star-shower .star:nth-child(5) { top: 90%; left: 65%; animation-delay: 8s; animation-duration: 20s; }
+        .star-shower .star:nth-child(6) { top: 15%; left: 95%; animation-delay: 1s; animation-duration: 14s; }
+        .star-shower .star:nth-child(7) { top: 80%; left: 5%; animation-delay: 3s; animation-duration: 16s; }
+        .star-shower .star:nth-child(8) { top: 50%; left: 40%; animation-delay: 5s; animation-duration: 11s; }
+        .star-shower .star:nth-child(9) { top: 10%; left: 75%; animation-delay: 7s; animation-duration: 19s; }
+        .star-shower .star:nth-child(10) { top: 60%; left: 20%; animation-delay: 9s; animation-duration: 13s; }
+
+        /* Keyframes for the shower effect */
+        @keyframes fallAndGlow {
+            0% {
+                transform: translateY(-100vh) rotate(0deg); /* Start way above */
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8; /* Max opacity in the middle */
+                transform: translateY(0vh) translateX(100px); /* Move diagonally down */
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg); /* End below the screen */
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body class="text-white font-sans">
-
+    
+    <div class="star-shower">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        </div>
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="container mx-auto px-4 md:px-8 flex justify-between items-center h-16">
             <a href="#home" class="text-xl font-bold text-teal-300 hover:text-white transition">mariadevhub</a>
             <div class="space-x-4">
-                <a href="#home" class="text-gray-200 hover:text-teal-300 transition">Home</a>
+                <!-- <a href="#home" class="text-gray-200 hover:text-teal-300 transition">Home</a> -->
                 <a href="#skills" class="text-gray-200 hover:text-teal-300 transition">Skills</a>
                 <a href="#projects" class="text-gray-200 hover:text-teal-300 transition">Projects</a>
                 <a href="#contact" class="text-gray-200 hover:text-teal-300 transition">Contact</a>
@@ -49,44 +137,31 @@
     
     <div class="container mx-auto p-4 md:p-8">
         
-        <!-- <header id="home" class="text-center py-24 md:py-32 section-padding">
-            
+        <header id="home" class="text-center py-16 md:py-24 section-padding" data-aos="fade-down">
             <img 
                 src="maria.jpg" 
                 alt="Maria Leonilyn Naive Profile" 
-                class="rounded-full w-40 h-40 mx-auto mb-6 object-cover glass-card border-4 border-teal-300/50"
-            >
-            
-            <h3 class="text-6xl md:text-7xl font-extrabold mb-4 text-teal-300">👋 Hi, I'm Maria Leonilyn Naive</h3>
-            <p class="text-2xl italic text-gray-300">Web Developer | Building responsive websites that empower businesses to grow online.</p>
-        </header> -->
-
-        <header id="home" class="text-center py-16 md:py-24 section-padding">
-    
-            <img 
-                src="maria.jpg" 
-                alt="Maria Leonilyn Naive Profile" 
-                class="rounded-full w-32 h-32 mx-auto mb-4 object-cover glass-card border-4 border-teal-300/50 shadow-lg"
+                class="rounded-full w-40 h-40 mx-auto mb-4 object-cover glass-card border-4 border-teal-300/50 shadow-lg"
+                data-aos="zoom-in" data-aos-delay="300"
             >
         
-            <h3 class="text-3xl md:text-5xl font-extrabold mb-2 text-teal-300">
-                Hi there, I’m Maria ✨
+            <h3 class="text-3xl md:text-5xl font-extrabold mb-2 text-teal-300 glow-text">
+                👋 Hi, I'm Maria ✨
             </h3>
             
             <p class="text-sm md:text-base text-gray-400 mb-6 tracking-wide uppercase">
                 Web Developer • Dreamer • Problem Solver
             </p>
         
-            <!-- 💻 Web Developer Description -->
-            <div class="max-w-3xl mx-auto glass-card p-5 rounded-2xl text-gray-200 shadow-lg leading-relaxed">
+            <div class="max-w-3xl mx-auto glass-card p-5 rounded-2xl text-gray-200 shadow-lg leading-relaxed" data-aos="zoom-in" data-aos-delay="500">
                 <p class="text-sm md:text-base text-gray-300 mb-4">
-                    A Web Developer who blends creativity with logic crafting clean, responsive, and meaningful digital experiences.  
-                    I build systems that not only work flawlessly but also feel intuitive and human.  
-                    As a <span class="text-teal-300 font-semibold">Full-Stack Developer</span>, I’m passionate about creating 
+                    A Web Developer who blends creativity with logic crafting clean, responsive, and meaningful digital experiences.
+                    I build systems that not only work flawlessly but also feel intuitive and human.
+                    As a <span class="text-teal-300 font-semibold">Full-Stack Developer</span>, I'm passionate about creating 
                     user-friendly and reliable web systems using <span class="font-semibold text-teal-300">PHP (CodeIgniter), JavaScript, 
-                    HTML, CSS,</span> and <span class="font-semibold text-teal-300">MySQL</span>.  
-                    Every line of code I write has purpose turning complex ideas into simple, elegant solutions that make a lasting impact.  
-                    <span class="italic text-teal-200">I don’t just code websites; I craft experiences that connect people with purpose.</span> 💻
+                    HTML, CSS,</span> and <span class="font-semibold text-teal-300">MySQL</span>.
+                    Every line of code I write has purpose turning complex ideas into simple, elegant solutions that make a lasting impact.
+                    <span class="italic text-teal-200">I don't just code websites; I craft experiences that connect people with purpose.</span> 💻
                 </p>
         
                 <p class="mt-4 text-xs md:text-sm text-gray-400 italic">
@@ -96,43 +171,42 @@
         
         </header>
         
-
         <main class="space-y-24">
             <section id="skills" class="section-padding">
-                <h2 class="text-4xl font-bold mb-8 text-center text-teal-300">🛠️ Tech Stack & Skills</h2>
+                <h2 class="text-4xl font-bold mb-8 text-center text-teal-300 glow-text" data-aos="fade-right">🛠️ Tech Stack & Skills</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="50">
                         <span class="text-4xl">🐘</span><h3 class="text-lg font-semibold mt-2">PHP</h3>
                     </div>
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="150">
                         <span class="text-4xl">🔥</span><h3 class="text-lg font-semibold mt-2">CodeIgniter</h3>
                     </div>
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="250">
                         <span class="text-4xl">💻</span><h3 class="text-lg font-semibold mt-2">JavaScript</h3>
                     </div>
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="350">
                         <span class="text-4xl">⚙️</span><h3 class="text-lg font-semibold mt-2">jQuery</h3>
                     </div>
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="450">
                         <span class="text-4xl">🎨</span><h3 class="text-lg font-semibold mt-2">HTML5/CSS3</h3>
                     </div>
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="550">
                         <span class="text-4xl">💾</span><h3 class="text-lg font-semibold mt-2">MySQL</h3>
                     </div>
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="650">
                         <span class="text-4xl">🔧</span><h3 class="text-lg font-semibold mt-2">Git/GitHub</h3>
                     </div>
-                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10">
+                    <div class="glass-card p-4 rounded-xl text-center transition duration-300 hover:scale-105 hover:bg-teal-600/10" data-aos="flip-up" data-aos-delay="750">
                         <span class="text-4xl">📊</span><h3 class="text-lg font-semibold mt-2">DataTables</h3>
                     </div>
                 </div>
             </section>
             
             <section id="projects" class="section-padding">
-                <h2 class="text-4xl font-bold mb-8 text-center text-teal-300">💻 Featured Project</h2>
+                <h2 class="text-4xl font-bold mb-8 text-center text-teal-300 glow-text" data-aos="fade-left">💻 Featured Project</h2>
             
                 <div class="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
-                    <div class="glass-card rounded-xl overflow-hidden transition duration-300 hover:shadow-teal-500/50 hover:shadow-2xl">
+                    <div class="glass-card rounded-xl overflow-hidden transition duration-300 hover:shadow-teal-500/50 hover:shadow-2xl" data-aos="zoom-in-up">
                         
                         <div class="md:flex">
                             
@@ -147,13 +221,13 @@
                                 <p class="text-gray-300 mb-4">
                                     A web application designed to streamline purchasing workflows and track procurement from start to finish, ensuring speed, accuracy, and clear accountability across all departments.
                                 </p>
-            
+                    
                                 <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 text-left">
                                     <li><strong>Core Features:</strong> Vendor tracking, real-time order updates (Pending, Done, Overdue).</li>
                                     <li><strong>Security:</strong> Role-based access for Pricing, Purchasing, Accounting, and Audit.</li>
                                     <li><strong>Analytics:</strong> Interactive charts, summary tiles, and export tools.</li>
                                 </ul>
-            
+                    
                                 <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
                                     <span class="text-sm bg-teal-600/50 px-3 py-1 rounded-full">CodeIgniter 3</span>
                                     <span class="text-sm bg-teal-600/50 px-3 py-1 rounded-full">PHP</span>
@@ -161,7 +235,7 @@
                                     <span class="text-sm bg-teal-600/50 px-3 py-1 rounded-full">DataTables</span>
                                     <span class="text-sm bg-teal-600/50 px-3 py-1 rounded-full">jQuery</span>
                                 </div>
-            
+                    
                                 <div class="flex justify-center md:justify-start gap-6">
                                     <a href="[LINK_TO_LIVE_DEMO_PURCHASING]" target="_blank"
                                     class="text-teal-300 hover:text-white font-semibold underline">Live Demo/View</a>
@@ -172,51 +246,46 @@
                         </div>
                     </div>
                 </div>
-            
-                <!-- <p class="text-center text-gray-400 mt-8">
-                    Got more cool projects? Just duplicate the card above and showcase your next masterpiece!
-                </p> -->
             </section>
-              
-
+            
             <section id="contact" class="section-padding">
-                <h2 class="text-4xl font-bold mb-8 text-center text-teal-300">📧 Get In Touch</h2>
-                            
-                <div class="glass-card p-8 rounded-xl max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold mb-8 text-center text-teal-300 glow-text" data-aos="fade-up">📧 Get In Touch</h2>
+                                    
+                <div class="glass-card p-8 rounded-xl max-w-2xl mx-auto" data-aos="zoom-in">
                     <p class="mb-6 text-lg text-center">
                         I am currently open to new opportunities for collaboration or full-time roles. Send me a message, and let's build something amazing together!
                     </p>
             
                     <form action="https://formspree.io/f/[YOUR_FORMSPREE_ENDPOINT]" method="POST" class="space-y-4">
-                                    
+                                                
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
                             <input type="text" id="name" name="name" required
                                 class="w-full p-3 rounded-lg bg-slate-800/70 border border-teal-500/50 text-white focus:ring-teal-300 focus:border-teal-300 transition"
                                 placeholder="Juan Dela Cruz">
                         </div>
-                                    
+                                                
                         <div>
                             <label for="_replyto" class="block text-sm font-medium text-gray-300 mb-1">Your Email</label>
                             <input type="email" id="_replyto" name="_replyto" required
                                 class="w-full p-3 rounded-lg bg-slate-800/70 border border-teal-500/50 text-white focus:ring-teal-300 focus:border-teal-300 transition"
                                 placeholder="email@example.com">
                         </div>
-                                    
+                                                
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
                             <textarea id="message" name="message" rows="4" required
                                 class="w-full p-3 rounded-lg bg-slate-800/70 border border-teal-500/50 text-white focus:ring-teal-300 focus:border-teal-300 transition"
                                 placeholder="I saw your Purchasing Order System project and I'm interested in discussing a role..."></textarea>
                         </div>
-                                    
+                                                
                         <button type="submit" 
                             class="w-full py-3 mt-4 text-lg font-bold rounded-lg bg-teal-600 hover:bg-teal-500 transition duration-300 shadow-lg shadow-teal-500/30">
                             Send Message
                         </button>
                     </form>
             
-                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mt-8 border-t border-gray-700/50 pt-6">
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mt-8 border-t border-gray-700/50 pt-6" data-aos="fade-up" data-aos-delay="200">
                         <a href="https://github.com/mariadevhub" target="_blank" class="text-teal-300 hover:text-white transition text-lg flex items-center justify-center">
                             <span class="text-2xl mr-2">🐙</span> GitHub
                         </a>
@@ -237,6 +306,15 @@
         </footer>
 
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            once: true,     // Animation only runs once on first load
+        });
+    </script>
 
 </body>
 </html>
